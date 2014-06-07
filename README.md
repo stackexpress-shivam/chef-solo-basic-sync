@@ -15,7 +15,8 @@ Getting Started With Chef-solo
     ```
 
   * Create The Simplest Chef Configuration:
-    * Start by having Chef do something simple: Create a /tmp/helloworld.txt file.
+    * Start by having Chef do something simple. Create a /tmp/helloworld.txt file.
+    
       ``` bash
       $ mkdir -p ~/chef/cookbooks/helloworld/recipes
       $ echo '

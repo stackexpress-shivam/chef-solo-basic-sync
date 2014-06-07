@@ -2,12 +2,14 @@ Getting Started With Chef-solo
 ==============================
 
 *    __Install Chef On The Example Server:__
-  *	Begin by updating the Ubuntu packages:
+  *    Begin by updating the Ubuntu packages:
+  
     ``` bash
     $ sudo apt-get update
     ```
 
   * Install Chef and its prerequisites:
+  
     ``` bash
     $ sudo aptitude install -y ruby ruby1.8-dev build-essential wget libruby1.8 rubygems
     $ sudo gem update --no-rdoc --no-ri
@@ -32,6 +34,7 @@ Getting Started With Chef-solo
 
 
   * Write a node.json to tell Chef to run the helloworld recipe.
+  
     ``` bash
     $ echo '
       {
@@ -40,6 +43,7 @@ Getting Started With Chef-solo
     ```
 
   * Tell Chef where to find the files we just created, using a solo.rb file:
+  
     ``` bash
     $ echo '
       file_cache_path "/home/vagrant/chef"
@@ -49,18 +53,21 @@ Getting Started With Chef-solo
     ```
 
   * Now ready to run chef-solo.
+  
     ``` bash
       $ sudo chef-solo -c ~/chef/solo.rb
     ```
     We use the -c option to explicitly tell chef-solo where to read its configuration.
 
   * To verify:
+  
     ``` bash
     $ cat /tmp/helloworld.txt
     ```
 
 * __Add More Steps To The Recipe:__
   * Create cron job recipe:
+  
     ``` bash
     $ mkdir -p ~/chef/cookbooks/crondemo/recipes
     $ echo '
@@ -74,9 +81,12 @@ Getting Started With Chef-solo
     ```
 
   * Edit the run_list in node.json to add recipe[crondemo]:
+  
     > "run_list": [ "recipe[helloworld]", "recipe[crondemo]" ]
+    >
 
   * Run Chef again:
+  
     ``` bash
     $ sudo chef-solo -c ~/chef/solo.rb
     ```
